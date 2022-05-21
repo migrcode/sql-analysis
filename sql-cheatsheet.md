@@ -82,4 +82,37 @@ WHERE column_y LIKE 'May%'
 )
 ```
 
+3. CASE WHEN Statements
+
+### Structure of a CASE WHEN statement
+
+```sql
+SELECT 
+  column1,
+  column2,
+  CASE
+    WHEN column3 IN ('Saturday', 'Sunday')
+      THEN 'Weekend'
+    ELSE 'No Weekend'
+  END AS is_weekend
+FROM schema.table
+WHERE column2 = 3
+```
+
+### Multiple WHEN conditions
+
+```sql
+SELECT 
+  column1,
+  column2,
+  CASE
+    WHEN column3 IN ('Saturday')
+      THEN 'Weekend'
+    WHEN column3 IN ('Sunday')
+      THEN 'Weekend'
+    ELSE 'No Weekend'
+  END AS is_weekend
+FROM schema.table
+WHERE column2 = 3
+```
 
