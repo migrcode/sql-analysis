@@ -116,3 +116,24 @@ FROM schema.table
 WHERE column2 = 3
 ```
 
+# 4. Joining tables
+
+### Basic structure of a (left) join
+
+```sql
+SELECT 
+  x.column1,
+  x.column2,
+  y.column1,
+  y.column2
+FROM schema.left_table AS x
+  LEFT JOIN schema.right_table AS y
+    ON x.column1 = y.column1
+```
+
+Other types that can be used are INNER JOIN and RIGHT JOIN. 
+
+
+
+
+
