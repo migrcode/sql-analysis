@@ -43,6 +43,43 @@ CONCAT(column2,  " ", column3)
 FROM schema.table
 ```
 
+# 2. Filtering using the WHERE clause
 
+### Filtering by multiple conditions
+
+```sql
+SELECT 
+column1,
+column2
+FROM schema.table
+WHERE column1 LIKE 'May%'
+AND column2 <= 5
+AND column3 = '2022'
+AND column4 BETWEEN '2022-01-01' AND '2022-02-01'
+AND column5 IN ('High', 'Medium', 'Low')
+```
+### Finding missing data
+
+```sql
+SELECT 
+column1,
+FROM schema.table
+WHERE column2 IS NULL
+```
+
+### Filtering based on results from a subquery
+
+```sql
+SELECT 
+column1,
+column2
+FROM schema.table
+WHERE 
+column3 IN
+(SELECT column_x
+FROM schema.table2
+WHERE column_y LIKE 'May%'
+)
+```
 
 
