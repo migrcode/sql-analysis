@@ -82,7 +82,7 @@ WHERE column_y LIKE 'May%'
 )
 ```
 
-3. CASE WHEN Statements
+# 3. CASE WHEN Statements
 
 ### Structure of a CASE WHEN statement
 
