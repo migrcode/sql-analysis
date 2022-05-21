@@ -23,3 +23,26 @@ LIMIT 10
 SELECT TOP 10 * 
 FROM schema.table
 ```
+
+### Basic calculations with rounding
+
+```sql
+SELECT 
+column1,
+column2,
+ROUND(column1 * column2, 2) AS column3
+FROM schema.table
+```
+
+### CONCAT
+
+```sql
+SELECT 
+column1,
+CONCAT(column2,  " ", column3)
+FROM schema.table
+```
+
+
+
+
