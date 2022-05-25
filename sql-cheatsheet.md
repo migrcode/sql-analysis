@@ -4,6 +4,7 @@
 For most of the examples below, the Northwind dataset from [github.com/Microsoft](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs) is used.
 
 # 1. Basics
+[basics](#basics)
 
 ### Standard Select Query
 
