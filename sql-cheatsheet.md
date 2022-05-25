@@ -3,8 +3,7 @@
 
 For most of the examples below, the Northwind dataset from [github.com/Microsoft](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs) is used.
 
-# 1. Basics
-[basics](#basics)
+# [1. Basics](#basics)
 
 ### Standard Select Query
 
@@ -205,6 +204,6 @@ GROUP BY c.CategoryID, c.CategoryName
 HAVING MAX(p.UnitPrice) > 100
 ```
 
-
+[basics](#basics)
 
 
