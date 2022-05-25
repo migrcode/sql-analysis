@@ -20,18 +20,17 @@ ORDER BY (columns)
 
 ```sql
 SELECT TOP 10 *
-FROM master.dbo.listings
+FROM Northwind.dbo.Customers
 ```
 
 ### Basic calculations with rounding
 
 ```sql
 SELECT TOP 10
-	userId,
-	movieId,
-	ROUND(rating, 0) AS rating,
-	timestamp
-FROM master.dbo.ratings
+	CustomerID,
+	OrderID,
+	ROUND(Freight, 2) AS Freight
+FROM Northwind.dbo.Orders
 ```
 
 ### CONCAT
