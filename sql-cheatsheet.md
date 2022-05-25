@@ -69,16 +69,20 @@ WHERE ShipRegion IS NULL
 ### Filtering based on results from a subquery
 
 ```sql
-SELECT 
-column1,
-column2
-FROM schema.table
-WHERE 
-column3 IN
-(SELECT column_x
-FROM schema.table2
-WHERE column_y LIKE 'May%'
-)
+SELECT TOP 10
+	ProductID,
+	ProductName,
+	CategoryID,
+	QuantityPerUnit,
+	UnitPrice
+FROM [Northwind].[dbo].[Products]
+WHERE CategoryID IN
+  (
+  SELECT 
+	  CategoryID
+  FROM Northwind.dbo.Categories
+  WHERE CategoryName = 'Beverages'
+  )
 ```
 
 # 3. CASE WHEN Statements
@@ -86,33 +90,33 @@ WHERE column_y LIKE 'May%'
 ### Structure of a CASE WHEN statement
 
 ```sql
-SELECT 
-  column1,
-  column2,
-  CASE
-    WHEN column3 IN ('Saturday', 'Sunday')
-      THEN 'Weekend'
-    ELSE 'No Weekend'
-  END AS is_weekend
-FROM schema.table
-WHERE column2 = 3
+SELECT TOP 10
+	LastName,
+	FirstName,
+	HireDate,
+	CASE
+		WHEN HireDate < '1993-01-01'
+			THEN 'Long-term Employee'
+		ELSE 'No long-term Employee'
+	END AS EmployeeType
+FROM Northwind.dbo.Employees
 ```
 
 ### Multiple WHEN conditions
 
 ```sql
-SELECT 
-  column1,
-  column2,
-  CASE
-    WHEN column3 IN ('Saturday')
-      THEN 'Weekend'
-    WHEN column3 IN ('Sunday')
-      THEN 'Weekend'
-    ELSE 'No Weekend'
-  END AS is_weekend
-FROM schema.table
-WHERE column2 = 3
+SELECT TOP 10
+	CompanyName
+	City,
+	Country,
+	CASE 
+		WHEN Country IN ('USA', 'UK')
+			THEN 'Region A'
+		WHEN Country IN ('Germany', 'Austria', 'Switzerland')
+			THEN 'Region B'
+		ELSE 'Other Region'
+	END AS CustomRegion
+FROM Northwind.dbo.Customers
 ```
 
 # 4. Joining tables
