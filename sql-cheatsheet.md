@@ -124,18 +124,18 @@ FROM Northwind.dbo.Customers
 ### Basic structure of a (left) join
 
 ```sql
-SELECT 
-  x.column1,
-  x.column2,
-  y.column1,
-  y.column2
-FROM schema.left_table AS x
-  LEFT JOIN schema.right_table AS y
-    ON x.column1 = y.column1
+SELECT TOP 100 
+	o.OrderID,
+	o.CustomerID,
+	o.OrderDate,
+	c.CompanyName,
+	c.Country
+FROM Northwind.dbo.Orders AS o
+	LEFT JOIN Northwind.dbo.Customers AS c
+		ON o.CustomerID = c.CustomerID
 ```
 
 Other types that can be used are INNER JOIN and RIGHT JOIN. 
-
 
 # 5. Aggregation
 
@@ -152,78 +152,57 @@ ORDER BY (columns)
 ### Using COUNT
 
 ```sql
-SELECT
-  column1,
-  column2
-  COUNT(*) AS counted_column
-FROM schema.table
-GROUP BY column1, column2
-ORDER BY column1, column2
+SELECT COUNT(*)
+FROM Northwind.dbo.Customers
+WHERE Country = 'Austria'
 ```
 
 
 ### Using COUNT DISTINCT
 
 ```sql
-SELECT
-  column1,
-  COUNT(DISTINCT column2) AS counted_column
-FROM schema.table
-WHERE column1 LIKE 'X%'
-GROUP BY column1
-ORDER BY column1
+SELECT COUNT(DISTINCT(Country))
+FROM Northwind.dbo.Suppliers
 ```
 
-### Using SUM
+### Using SUM (with an inside calculation)
 
 ```sql
-SELECT
-  column1,
-  column2
-  SUM(column3) AS sum_column
-FROM schema.table
-GROUP BY column1, column2
-ORDER BY column1, column2
-```
-
-### Using SUM with an inside calculation
-
-```sql
-SELECT
-  column1,
-  column2
-  SUM(column3 * column4) AS sum_column
-FROM schema.table
-GROUP BY column1, column2
-ORDER BY column1, column2
+SELECT TOP 10
+	o.CustomerID,
+	SUM(d.UnitPrice * d.Quantity) AS total
+FROM Northwind.dbo.Orders AS o
+	LEFT JOIN Northwind.dbo."Order Details" AS d
+	ON o.OrderID = d.OrderID
+GROUP BY o.CustomerID
+ORDER BY total DESC
 ```
 
 ### Using MIN/MAX
 
 ```sql
-SELECT
-  MIN(column1) AS min_val,
-  MAX(column2) AS max_val,
-  column3,
-  column4
-FROM schema.table
-GROUP BY column3, column4
+SELECT 
+	c.CategoryName,
+	MAX(p.UnitPrice) AS MaxUnitPrice
+FROM Northwind.dbo.Products AS p
+	LEFT JOIN Northwind.dbo.Categories AS c
+		ON c.CategoryID = p.CategoryID
+GROUP BY c.CategoryName
 ```
 
 ### Perform filtering after grouping using HAVING
 
 ```sql
-SELECT
-  SUM(column1) AS sum_col,
-  column2,
-  column3
-FROM schema.table
-WHERE column4 LIKE 'X'
-GROUP BY column2, column3
-HAVING sum_col > 2
-ORDER BY column2
+SELECT 
+	c.CategoryID,
+	c.CategoryName,
+	MAX(p.UnitPrice) AS MaxUnitPrice
+FROM Northwind.dbo.Products AS p
+	LEFT JOIN Northwind.dbo.Categories AS c
+		ON c.CategoryID = p.CategoryID
+GROUP BY c.CategoryID, c.CategoryName 
+HAVING MAX(p.UnitPrice) > 100
 ```
-
 
 
 
