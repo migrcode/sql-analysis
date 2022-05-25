@@ -1,7 +1,7 @@
 
 # Preface
 
-For most of the examples below, the Airbnb dataset from [insideairbnb.com](http://insideairbnb.com/get-the-data) is used.
+For most of the examples below, the Northwind dataset from [github.com/Microsoft](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs) is used.
 
 # 1. Basics
 
@@ -19,17 +19,8 @@ ORDER BY (columns)
 ### Limiting number of results
 
 ```sql
-SELECT * 
-FROM schema.table
-LIMIT 10
-```
-
-```sql
-SELECT TOP 10 
-	movieId,
-	title,
-	genres
-FROM master.dbo.movies
+SELECT TOP 10 *
+FROM master.dbo.listings
 ```
 
 ### Basic calculations with rounding
