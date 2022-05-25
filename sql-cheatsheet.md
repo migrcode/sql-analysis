@@ -1,7 +1,7 @@
 
 # Preface
 
-For most of the examples below, the movie dataset from [kaggle.com](https://www.kaggle.com/datasets/ashukr/movie-rating-data) is used.
+For most of the examples below, the Airbnb dataset from [insideairbnb.com](http://insideairbnb.com/get-the-data) is used.
 
 # 1. Basics
 
