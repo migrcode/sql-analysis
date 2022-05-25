@@ -44,7 +44,7 @@ SELECT TOP 10
 FROM Northwind.dbo.Customers
 ```
 
-# 2. Filtering using the WHERE clause
+# [2. Filtering using the WHERE clause](#2-filtering-using-the-where-clause)
 
 ### Filtering by multiple conditions
 
@@ -85,7 +85,7 @@ WHERE CategoryID IN
   )
 ```
 
-# 3. CASE WHEN Statements
+# [3. CASE WHEN Statements](#3-case-when-statements)
 
 ### Structure of a CASE WHEN statement
 
@@ -119,7 +119,7 @@ SELECT TOP 10
 FROM Northwind.dbo.Customers
 ```
 
-# 4. Joining tables
+# [4. Joining tables](#4-joining-tables)
 
 ### Basic structure of a (left) join
 
@@ -137,7 +137,7 @@ FROM Northwind.dbo.Orders AS o
 
 Other types that can be used are INNER JOIN and RIGHT JOIN. 
 
-# 5. Aggregation
+# [5. Aggregation](#5-aggregation)
 
 ### Basic structure
 
@@ -204,6 +204,5 @@ GROUP BY c.CategoryID, c.CategoryName
 HAVING MAX(p.UnitPrice) > 100
 ```
 
-[basics](#1-basics)
-
+[6. Window Functions](#6-window-functions)
 
