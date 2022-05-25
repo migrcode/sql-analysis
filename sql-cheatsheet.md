@@ -37,9 +37,11 @@ FROM Northwind.dbo.Orders
 
 ```sql
 SELECT TOP 10
-	movieId,
-	CONCAT('Title: ', title, ' Genres: ', genres)
-FROM master.dbo.movies
+	ContactName,
+	ContactTitle,
+	Address,
+	CONCAT(PostalCode, ' ', City) AS City
+FROM Northwind.dbo.Customers
 ```
 
 # 2. Filtering using the WHERE clause
@@ -47,23 +49,21 @@ FROM master.dbo.movies
 ### Filtering by multiple conditions
 
 ```sql
-SELECT 
-column1,
-column2
-FROM schema.table
-WHERE column1 LIKE 'May%'
-AND column2 <= 5
-AND column3 = '2022'
-AND column4 BETWEEN '2022-01-01' AND '2022-02-01'
-AND column5 IN ('High', 'Medium', 'Low')
+SELECT TOP 100
+	ContactName,
+	ContactTitle,
+	Address,
+	City,
+	PostalCode
+FROM Northwind.dbo.Customers
+WHERE City = 'London' AND ContactTitle = 'Sales Representative'
 ```
 ### Finding missing data
 
 ```sql
-SELECT 
-column1,
-FROM schema.table
-WHERE column2 IS NULL
+SELECT TOP 10 *
+FROM Northwind.dbo.Orders
+WHERE ShipRegion IS NULL
 ```
 
 ### Filtering based on results from a subquery
