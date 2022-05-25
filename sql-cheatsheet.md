@@ -25,27 +25,31 @@ LIMIT 10
 ```
 
 ```sql
-SELECT TOP 10 * 
-FROM schema.table
+SELECT TOP 10 
+	movieId,
+	title,
+	genres
+FROM master.dbo.movies
 ```
 
 ### Basic calculations with rounding
 
 ```sql
-SELECT 
-column1,
-column2,
-ROUND(column1 * column2, 2) AS column3
-FROM schema.table
+SELECT TOP 10
+	userId,
+	movieId,
+	ROUND(rating, 0) AS rating,
+	timestamp
+FROM master.dbo.ratings
 ```
 
 ### CONCAT
 
 ```sql
-SELECT 
-column1,
-CONCAT(column2,  " ", column3)
-FROM schema.table
+SELECT TOP 10
+	movieId,
+	CONCAT('Title: ', title, ' Genres: ', genres)
+FROM master.dbo.movies
 ```
 
 # 2. Filtering using the WHERE clause
