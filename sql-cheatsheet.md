@@ -248,5 +248,22 @@ FROM Northwind.dbo.Orders
 ORDER BY OrderDate, CustomerID, Freight
 ```
 
-The query above selects Freight and ShipCity per CustomerID for the current OrderDate and maps Freight and ShipCity of the previous order from the same customer (if a previous order can be found, i.e. if the current order is not the first order). This result is achieved by using the LAG function in combination with PARTITION. 
+The query above selects Freight and ShipCity per CustomerID for the current OrderDate and maps Freight and ShipCity of the previous order from the same customer (if a previous order can be found, i.e. if the current order is not the first order). This result is achieved by using the LAG function in combination with PARTITION. The function LEAD is also possible for future values. This query can be used as a subquery in case we want to introduce further filters (e.g. if we want to look at the lagged values at a specific date):
+
+```sql
+SELECT * FROM
+(
+	SELECT TOP 1000
+		OrderID,
+		CustomerID,
+		OrderDate,
+		Freight,
+		ShipCity,
+		LAG(Freight,1) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS prev_freight,
+		LAG(ShipCity,1) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS prev_shipcity
+	FROM Northwind.dbo.Orders
+	ORDER BY OrderDate, CustomerID, Freight
+) AS x
+WHERE x.OrderDate = '1996-10-03'
+```
 
