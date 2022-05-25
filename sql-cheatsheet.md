@@ -3,6 +3,11 @@
 
 For most of the examples below, the Northwind dataset from [github.com/Microsoft](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs) is used.
 
+# Table of Contents
+
+* [1. Basics](#basics)
+* [2. Filtering using the WHERE clause](#2-filtering-using-the-where-clause)
+
 # [1. Basics](#basics)
 
 ### Standard Select Query
