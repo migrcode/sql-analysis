@@ -204,6 +204,6 @@ GROUP BY c.CategoryID, c.CategoryName
 HAVING MAX(p.UnitPrice) > 100
 ```
 
-[basics](#basics)
+[basics](#1-basics)
 
 
