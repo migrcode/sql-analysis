@@ -1,3 +1,8 @@
+
+# Preface
+
+For most of the examples below, the movie dataset from [kaggle.com](https://www.kaggle.com/datasets/ashukr/movie-rating-data) is used.
+
 # 1. Basics
 
 ### Standard Select Query
