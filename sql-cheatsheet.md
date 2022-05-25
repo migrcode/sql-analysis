@@ -235,8 +235,18 @@ WHERE x.price_rank = 1
 
 The query above consists of an inner and outer query. The inner query sorts products per category in descending order and assigns a rank to them, whereas 1 being the most expensive product per category. The outer query then just selects the single most expensive product per category, providing a compact output. Note that the function RANK() is similar to ROW_NUMBER. However, ROW_NUMBER numbers all rows sequentially (for example 1, 2, 3, 4, 5). RANK provides the same numeric value for ties (for example 1, 2, 2, 4, 5). See [docs.microsoft.com](https://docs.microsoft.com/en-us/sql/t-sql/functions/rank-transact-sql?view=sql-server-ver16) for further details.
 
+```sql
+SELECT TOP 1000
+	OrderID,
+	CustomerID,
+	OrderDate,
+	Freight,
+	ShipCity,
+	LAG(Freight,1) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS prev_freight,
+	LAG(ShipCity,1) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS prev_shipcity
+FROM Northwind.dbo.Orders
+ORDER BY OrderDate, CustomerID, Freight
+```
 
-
-
-
+The query above selects Freight and ShipCity per CustomerID for the current OrderDate and maps Freight and ShipCity of the previous order from the same customer (if a previous order can be found, i.e. if the current order is not the first order). This result is achieved by using the LAG function in combination with PARTITION. 
 
