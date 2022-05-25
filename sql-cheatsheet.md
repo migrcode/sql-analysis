@@ -5,12 +5,12 @@ For most of the examples below, the Northwind dataset from [github.com/Microsoft
 
 # Table of Contents
 
-[1. Basics](#basics)
-[2. Filtering using the WHERE clause](#2-filtering-using-the-where-clause)
-[3. CASE WHEN Statements](#3-case-when-statements)
-[4. Joining tables](#4-joining-tables)
-[5. Aggregation](#5-aggregation)
-[6. Window Functions](#6-window-functions)
+* [1. Basics](#basics)
+* [2. Filtering using the WHERE clause](#2-filtering-using-the-where-clause)
+* [3. CASE WHEN Statements](#3-case-when-statements)
+* [4. Joining tables](#4-joining-tables)
+* [5. Aggregation](#5-aggregation)
+* [6. Window Functions](#6-window-functions)
 
 # [1. Basics](#basics)
 
