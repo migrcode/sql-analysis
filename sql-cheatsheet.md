@@ -233,7 +233,7 @@ SELECT * FROM
 WHERE x.price_rank = 1
 ```
 
-The query above consists of an inner and outer query. The inner query sorts products per category in descending order and assigns a rank to them, whereas 1 being the most expensive product per category. The outer query then just selects the single most expensive product per category, providing a compact output. 
+The query above consists of an inner and outer query. The inner query sorts products per category in descending order and assigns a rank to them, whereas 1 being the most expensive product per category. The outer query then just selects the single most expensive product per category, providing a compact output. Note that the function RANK() is similar to ROW_NUMBER. However, ROW_NUMBER numbers all rows sequentially (for example 1, 2, 3, 4, 5). RANK provides the same numeric value for ties (for example 1, 2, 2, 4, 5). See [docs.microsoft.com](https://docs.microsoft.com/en-us/sql/t-sql/functions/rank-transact-sql?view=sql-server-ver16) for further details.
 
 
 
