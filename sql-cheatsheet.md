@@ -215,3 +215,28 @@ HAVING MAX(p.UnitPrice) > 100
 
 # [6. Window Functions](#6-window-functions)
 
+### ROW NUMBER
+
+```sql
+SELECT * FROM
+(
+	SELECT 
+		c.CategoryID,
+		c.CategoryName,
+		p.ProductName,
+		p.UnitPrice,
+		ROW_NUMBER() OVER (PARTITION BY c.CategoryID ORDER BY p.UnitPrice DESC) AS price_rank
+	FROM Northwind.dbo.Products AS p
+		LEFT JOIN Northwind.dbo.Categories AS c
+			ON c.CategoryID = p.CategoryID
+	) AS x
+WHERE x.price_rank = 1
+```
+
+The query above consists of an inner and outer query. The inner query sorts products per category in descending order and assigns a rank to them, whereas 1 being the most expensive product per category. The outer query then just selects the single most expensive product per category, providing a compact output. 
+
+
+
+
+
+
