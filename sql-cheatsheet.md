@@ -134,6 +134,94 @@ FROM schema.left_table AS x
 Other types that can be used are INNER JOIN and RIGHT JOIN. 
 
 
+# 5. Aggregation
+
+### Basic structure
+
+```sql
+SELECT (columns)
+FROM (schema.table)
+WHERE (filter)
+GROUP BY (columns)
+ORDER BY (columns)
+```
+
+### Using COUNT
+
+```sql
+SELECT
+  column1,
+  column2
+  COUNT(*) AS counted_column
+FROM schema.table
+GROUP BY column1, column2
+ORDER BY column1, column2
+```
+
+
+### Using COUNT DISTINCT
+
+```sql
+SELECT
+  column1,
+  COUNT(DISTINCT column2) AS counted_column
+FROM schema.table
+WHERE column1 LIKE 'X%'
+GROUP BY column1
+ORDER BY column1
+```
+
+### Using SUM
+
+```sql
+SELECT
+  column1,
+  column2
+  SUM(column3) AS sum_column
+FROM schema.table
+GROUP BY column1, column2
+ORDER BY column1, column2
+```
+
+### Using SUM with an inside calculation
+
+```sql
+SELECT
+  column1,
+  column2
+  SUM(column3 * column4) AS sum_column
+FROM schema.table
+GROUP BY column1, column2
+ORDER BY column1, column2
+```
+
+### Using MIN/MAX
+
+```sql
+SELECT
+  MIN(column1) AS min_val,
+  MAX(column2) AS max_val,
+  column3,
+  column4
+FROM schema.table
+GROUP BY column3, column4
+```
+
+### Perform filtering after grouping using HAVING
+
+```sql
+SELECT
+  SUM(column1) AS sum_col,
+  column2,
+  column3
+FROM schema.table
+WHERE column4 LIKE 'X'
+GROUP BY column2, column3
+HAVING sum_col > 2
+ORDER BY column2
+```
+
+
 
 
 
