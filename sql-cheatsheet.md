@@ -308,3 +308,23 @@ SELECT * FROM
 WHERE x.OrderDate = '1996-10-03'
 ```
 
+# [7. CTE (Common Table Expressions)](#7-cte-common-table-expressions)
+
+```sql
+WITH my_products AS 
+(
+	SELECT
+		ProductID,
+		ProductName,
+		UnitPrice,
+		Discontinued
+	FROM Northwind.dbo.Products
+)
+
+SELECT 
+	mp.ProductID,
+	mp.ProductName
+FROM my_products AS mp
+WHERE mp.Discontinued = 1
+```
+
