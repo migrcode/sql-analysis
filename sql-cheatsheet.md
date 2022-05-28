@@ -188,6 +188,12 @@ FROM Northwind.dbo.Orders AS o
 
 Other types that can be used are INNER JOIN and RIGHT JOIN. 
 
+### Self Join
+
+```sql
+--to follow
+```
+
 # [5. Aggregation](#5-aggregation)
 
 ### Basic structure
