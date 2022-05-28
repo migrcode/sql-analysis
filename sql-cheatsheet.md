@@ -11,6 +11,7 @@ For most of the examples below, the Northwind dataset from [github.com/Microsoft
 * [4. Joining tables](#4-joining-tables)
 * [5. Aggregation](#5-aggregation)
 * [6. Window Functions](#6-window-functions)
+* [7. CTE (Common Table Expressions)](#7-cte-common-table-expressions)
 
 # [1. Basics](#basics)
 
