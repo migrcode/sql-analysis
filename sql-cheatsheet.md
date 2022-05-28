@@ -53,6 +53,47 @@ SELECT TOP 10
 FROM Northwind.dbo.Customers
 ```
 
+## Handling Dates
+
+### EXTRACT date and time components from a date
+
+```sql
+SELECT TOP 10
+		OrderID,
+		CustomerID,
+		OrderDate,
+		DATEPART(DAY FROM OrderDate) AS OrderDateDay,
+		DATEPART(MONTH FROM OrderDate) AS OrderDateMonth,
+		DATEPART(YEAR FROM OrderDate) AS OrderDateYear,
+		DATEPART(HOUR FROM OrderDate) AS OrderDateHour,
+		DATEPART(MINUTE FROM OrderDate) AS OrderDateMinute,
+		DATEPART(SECOND FROM OrderDate) AS OrderDateSecond
+  FROM Northwind.dbo.Orders
+```
+
+### Adding date components using DATE_ADD
+
+```sql
+SELECT TOP 10
+		OrderID,
+		CustomerID,
+		OrderDate,
+		DATEADD(MINUTE, 30, OrderDate) AS OrderDateAdd
+  FROM Northwind.dbo.Orders
+  ```
+  
+### Difference between two dates using DATEDIFF
+
+```sql
+SELECT TOP 10
+		OrderID,
+		CustomerID,
+		OrderDate,
+		DATEADD(MINUTE, 30, OrderDate) AS OrderDateAdd,
+		DATEDIFF(MINUTE, OrderDate, DATEADD(MINUTE, 30, OrderDate)) AS OrderDateDiff
+  FROM Northwind.dbo.Orders
+  ```
+
 # [2. Filtering using the WHERE clause](#2-filtering-using-the-where-clause)
 
 ### Filtering by multiple conditions
